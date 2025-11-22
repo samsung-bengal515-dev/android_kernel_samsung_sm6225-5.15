@@ -4,8 +4,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-kernelsu-builder.url = "github:xddxdd/nix-kernelsu-builder";
+    kernelsu = {
+      url = "github:tiann/KernelSU/463afa7471b5a753d8bd989a5cb0dc781bfd986";
+      flake = false;
+    };
     sufs4ksu = {
-      url = "gitlab:simonpunk/susfs4ksu/gki-android14-5.15";
+      url = "gitlab:simonpunk/susfs4ksu/e27713beefb0fdec973c84004a2fb5f0738c75d2";
       flake = false;
     };
   };
@@ -89,7 +93,8 @@
 
                   kernelSU = {
                     enable = true;
-                    variant = "next";
+                    src = lib.mkForce inputs.kernelsu;
+                    variant = "official";
                   };
 
                   susfs = {
