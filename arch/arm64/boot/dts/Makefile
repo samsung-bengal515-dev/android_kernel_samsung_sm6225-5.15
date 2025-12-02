@@ -3,7 +3,7 @@
 
 dtstree	:= $(srctree)/$(src)
 vendor  := $(dtstree)/vendor
-ifneq "$(wildcard $(vendor)/Makefile)" ""
+ifeq "$(wildcard $(vendor)/Makefile)" ""
 	subdir-y += actions
 	subdir-y += allwinner
 	subdir-y += altera
